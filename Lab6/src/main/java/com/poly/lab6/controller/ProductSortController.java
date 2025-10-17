@@ -24,7 +24,7 @@ public class ProductSortController {
         // Nếu chưa chọn cột, mặc định sắp xếp theo price giảm dần
         String sortField = field.orElse("price");
 
-        Sort sort = Sort.by(Direction.DESC, sortField);
+        Sort sort = Sort.by(Direction.ASC, sortField);
 
         List<Product> items = dao.findAll(sort);
 

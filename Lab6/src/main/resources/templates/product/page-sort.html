@@ -27,7 +27,7 @@
 
 <!-- Điều hướng phân trang -->
 <a th:href="@{|/product/page-sort?p=0&field=${field.toLowerCase()}|}">First</a>
-<a th:href="@{|/product/page-sort?p=${page.number - 1}&field=${field.toLowerCase()}|}">Previous</a>
+<a th:href="@{|/product/page-sort?p=${(page.number - 1)}&field=${field.toLowerCase()}|}">Previous</a>
 <a th:href="@{|/product/page-sort?p=${page.number + 1}&field=${field.toLowerCase()}|}">Next</a>
 <a th:href="@{|/product/page-sort?p=${page.totalPages - 1}&field=${field.toLowerCase()}|}">Last</a>
 

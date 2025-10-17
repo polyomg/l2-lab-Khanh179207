@@ -27,6 +27,7 @@ public class ProductPageController {
         Pageable pageable = PageRequest.of(p.orElse(0), 5);
         Page<Product> page = dao.findAll(pageable);
 
+
         model.addAttribute("page", page);
         return "product/page";
     }

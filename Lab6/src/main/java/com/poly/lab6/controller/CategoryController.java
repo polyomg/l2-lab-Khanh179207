@@ -27,10 +27,10 @@ public class CategoryController {
 
     // Chỉnh sửa
     @RequestMapping("/category/edit/{id}")
-    public String edit(Model model, @PathVariable("id") String id) {
-        Category item = dao.findById(id).orElse(new Category());
-        model.addAttribute("item", item);
-        model.addAttribute("items", dao.findAll());
+        public String edit(Model model, @PathVariable("id") String id) {
+            Category item = dao.findById(id).orElse(new Category());
+            model.addAttribute("item", item);
+            model.addAttribute("items", dao.findAll());
         return "category/index";
     }
 
