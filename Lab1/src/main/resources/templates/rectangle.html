@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tính hình chữ nhật</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Tính diện tích và chu vi hình chữ nhật</h2>
+<form action="/rectangle/calc" method="post">
+    <label>Chiều dài: </label>
+    <input type="number" name="length"><br><br>
+    <label>Chiều rộng: </label>
+    <input type="number" name="width"><br><br>
+    <button type="submit">Tính</button>
+</form>
+
+<h3 th:text="${message}"></h3>
+</body>
+</html>

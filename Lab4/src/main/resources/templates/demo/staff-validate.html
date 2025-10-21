@@ -1,0 +1,56 @@
+<!--bai 2-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Validation</title>
+    <style>
+        i { color: red; }
+        .msg { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h2>Staff Validation Form</h2>
+
+<!-- Thông báo -->
+<div th:if="${message}" class="msg" th:text="${message}"></div>
+
+<form th:object="${staff}" th:action="@{/staff/create/save}" method="post" enctype="multipart/form-data">
+    Email: <input th:field="*{id}">
+    <i th:errors="*{id}"></i><hr>
+
+    Họ và tên: <input th:field="*{fullname}">
+    <i th:errors="*{fullname}"></i><hr>
+
+    Giới tính:
+    <input type="radio" th:field="*{gender}" value="true">Nam
+    <input type="radio" th:field="*{gender}" value="false">Nữ
+    <i th:errors="*{gender}"></i><hr>
+
+    Ngày sinh:
+    <input name="birthday" th:value="*{#dates.format(birthday, 'MM/dd/yyyy')}">
+    <i th:errors="*{birthday}"></i><hr>
+
+    <!-- Hình ảnh -->
+    <input th:field="*{photo}" type="hidden">
+    <input name="photo_file" type="file"><br>
+    <div th:if="${staff.photo}">
+        <p>Ảnh đã chọn:</p>
+        <img th:src="@{'/images/' + ${staff.photo}}" alt="Ảnh nhân viên" width="150">
+    </div>
+    <hr>
+
+    Cấp bậc:
+    <select th:field="*{level}">
+        <option value="0">Úy</option>
+        <option value="1">Tá</option>
+        <option value="2">Tướng</option>
+    </select><hr>
+
+    Salary: <input th:field="*{salary}">
+    <i th:errors="*{salary}"></i><hr>
+
+    <button type="submit">Validate</button>
+</form>
+</body>
+</html>
