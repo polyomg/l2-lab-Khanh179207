@@ -23,9 +23,16 @@
     </th:block>
 </table>
 
-<a th:href="@{|/product/search-and-page?p=0|}">First</a> |
-<a th:href="@{|/product/search-and-page?p=${page.number - 1}|}">Prev</a> |
-<a th:href="@{|/product/search-and-page?p=${page.number + 1}|}">Next</a> |
+<a th:href="@{|/product/search-and-page?p=0|}">First</a>
+<a th:if="${page.number > 0}"
+   th:href="@{|/product/search-and-page?p=${page.number - 1}|}">
+    Previous
+</a>
+<span th:if="${page.number == 0}" style="color: gray; pointer-events: none; opacity: 0.5;">
+   Previous
+</span>
+
+<a th:href="@{|/product/search-and-page?p=${page.number == page.totalPages - 1 ? 0 : page.number + 1}|}">Next</a>
 <a th:href="@{|/product/search-and-page?p=${page.totalPages - 1}|}">Last</a>
 
 <ul>

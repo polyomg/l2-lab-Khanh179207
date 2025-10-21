@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab 8 - Bài 3</title>
+</head>
+<body>
+<h2>Form Gửi Email Đa Năng</h2>
+<hr>
+
+<form th:action="@{/mail/form/send}" method="post">
+    <label for="to">Gửi tới:</label><br>
+    <input type="email" id="to" name="to" required><br>
+
+    <label for="subject">Tiêu đề:</label><br>
+    <input type="text" id="subject" name="subject" required><br>
+
+    <label for="body">Nội dung:</label><br>
+    <textarea id="body" name="body" rows="4" required></textarea><br>
+
+    <div class="button-group"><br>
+        <button type="submit" name="action" value="sendNow" >
+            Gửi ngay lập tức
+        </button><br>
+
+        <button type="submit" name="action" value="sendLater">
+            Thêm vào hàng đợi (Gửi sau)
+        </button>
+    </div>
+</form>
+</body>
+</html>

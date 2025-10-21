@@ -10,15 +10,15 @@ import java.util.List;
 @Repository
 public interface ProductDAO extends JpaRepository<Product, Integer> {
 
-    // Bài 1: JPQL
+
     @Query("FROM Product o WHERE o.price BETWEEN ?1 AND ?2")
     List<Product> findByPrice(double minPrice, double maxPrice);
 
-    // Bài 2: JPQL
+
     @Query("FROM Product o WHERE o.name LIKE ?1")
     Page<Product> findByKeywords(String keywords, Pageable pageable);
 
-    // Bài 3: Tổng hợp dữ liệu tồn kho
+
     @Query("SELECT o.category AS group, SUM(o.price) AS sum, COUNT(o) AS count "
             + "FROM Product o "
             + "GROUP BY o.category "
@@ -26,9 +26,9 @@ public interface ProductDAO extends JpaRepository<Product, Integer> {
     List<Report> getInventoryByCategory();
 
 
-    // Bài 4: DSL (thay JPQL ở bài 1)
+
     List<Product> findByPriceBetween(double minPrice, double maxPrice);
 
-    // Bài 5: DSL (thay JPQL ở bài 2)
+
     Page<Product> findAllByNameLike(String keywords, Pageable pageable);
 }
